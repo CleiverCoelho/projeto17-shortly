@@ -59,3 +59,16 @@ export async function openShortUrl(req, res) {
     }
 }
 
+export async function deleteUrlById(req, res) {
+    // AINDA FALTA REDIRECIONAR O USUARIO
+    const {urlId} = res.locals;
+    try {
+        await db.query(`DELETE FROM urls WHERE id=$1`,
+        [urlId])
+        res.status(204).send("excluido com sucesso");
+    } catch (err) {
+        res.status(500).send(err.message)
+    }
+}
+
+
