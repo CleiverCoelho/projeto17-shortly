@@ -41,7 +41,19 @@ export async function getUrlById(req, res) {
             shortUrl: url.shortUrl,
             url: url.name
         }
-        res.status(201).send(response);
+        res.status(200).send(response);
+    } catch (err) {
+        res.status(500).send(err.message)
+    }
+}
+
+export async function openShortUrl(req, res) {
+    // AINDA FALTA REDIRECIONAR O USUARIO
+    const {url, views, shortUrl} = res.locals;
+    try {
+        await db.query(`UPDATE urls SET views=$1 WHERE "shortUrl"=$2`,
+        [views + 1, shortUrl])
+        res.status(200).send("atualizado com sucesso");
     } catch (err) {
         res.status(500).send(err.message)
     }
