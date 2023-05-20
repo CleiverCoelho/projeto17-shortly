@@ -14,3 +14,15 @@ export async function validateUserToken(req, res, next) {
         res.status(500).send(err.message)
     }
 }
+
+export async function validateUrlId(req, res, next) {
+    const {id} = req.params;
+    try {
+        const url = await db.query(`SELECT * FROM urls WHERE id=$1`, [id])
+        if (url.rowCount === 0) return res.status(404).send("url nao existe")
+        res.locals.url = url.rows[0]
+        return next()
+    } catch (err) {
+        res.status(500).send(err.message)
+    }
+}

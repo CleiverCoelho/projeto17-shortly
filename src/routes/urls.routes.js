@@ -2,13 +2,13 @@ import { Router } from "express"
 
 import validateSchema from "../middlewares/validateSchema.middleware.js"
 import { urlsShortenSchema } from "../schemas/urls.schemas.js"
-import { shortUrl } from "../controllers/urls.controllers.js"
-import { validateUserToken } from "../middlewares/urls.middleware.js"
+import { getUrlById, shortUrl } from "../controllers/urls.controllers.js"
+import { validateUrlId, validateUserToken } from "../middlewares/urls.middleware.js"
 
 const urlsRouter = Router()
 
 urlsRouter.post("/urls/shorten", validateSchema(urlsShortenSchema), validateUserToken, shortUrl)
-// usersRouter.post("/sign-in", validateSchema(signInSchema), validateSignIn,signInUser)
+urlsRouter.get("/urls/:id", validateUrlId, getUrlById);
 // customersRouter.post("/customers", validateSchema(customerSchema), validateCustomerCpf, createCustomer)
 // customersRouter.put("/customers/:id", validateSchema(customerSchema),validateCustomerCpf,  updateCustomer)
 

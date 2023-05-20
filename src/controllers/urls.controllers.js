@@ -32,3 +32,18 @@ export async function shortUrl(req, res) {
         res.status(500).send(err.message)
     }
 }
+
+export async function getUrlById(req, res) {
+    const {url} = res.locals;
+    try {
+        const response = {
+            id: url.id,
+            shortUrl: url.shortUrl,
+            url: url.name
+        }
+        res.status(201).send(response);
+    } catch (err) {
+        res.status(500).send(err.message)
+    }
+}
+
