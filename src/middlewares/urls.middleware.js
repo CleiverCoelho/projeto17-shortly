@@ -8,7 +8,8 @@ export async function validateUserToken(req, res, next) {
     try {
         const session = await db.query(`SELECT * FROM sessions WHERE token=$1`, [userToken])
         if (session.rowCount === 0) return res.status(401).send("token invalido")
-        return res.sendStatus(201);
+        res.locals.userId = session.rows[0].userId
+        return next()
     } catch (err) {
         res.status(500).send(err.message)
     }
