@@ -26,6 +26,41 @@ export async function signInUser(req, res) {
     }
 }
 
+export async function getUserData(req, res) {
+    // AINDA FALTA REDIRECIONAR O USUARIO
+    const userId = res.locals.userId
+    try {
+        const {rows: userInfo} = await db.query(`SELECT users.id, users.name, SUM(urls.views) AS "visitCount"   
+            FROM urls
+            JOIN users ON users.id=urls."userId"
+            WHERE urls."userId"=$1
+            GROUP BY users.id, users.name
+
+        `, [userId])
+        const {rows: shortUrls} = await db.query(`SELECT id, "shortUrl", name AS url, "views" AS "visitCount"
+            FROM urls WHERE urls."userId"=$1`, 
+            [userId])
+        
+        const response = {...userInfo[0], shortenedUrls: shortUrls}
+        // console.log(response)
+        res.send(response).status(200);
+    } catch (err) {
+        res.status(500).send(err.message)
+    }
+}
+
+
+export async function getAllUsers(req, res) {
+    // AINDA FALTA REDIRECIONAR O USUARIO
+    try {
+        const users = await db.query(`SELECT * FROM users`)
+        res.status(204).send(users.rows[0]);
+    } catch (err) {
+        res.status(500).send(err.message)
+    }
+}
+
+
 // export async function createCustomer(req, res) {
 //     const { name, phone, birthday, cpf } = req.body
 //     try {

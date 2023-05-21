@@ -71,13 +71,5 @@ export async function deleteUrlById(req, res) {
     }
 }
 
-export async function getAllUsers(req, res) {
-    // AINDA FALTA REDIRECIONAR O USUARIO
-    try {
-        const users = await db.query(`SELECT * FROM users`)
-        res.status(204).send(users.rows[0]);
-    } catch (err) {
-        res.status(500).send(err.message)
-    }
-}
+
 
