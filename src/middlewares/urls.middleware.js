@@ -46,6 +46,7 @@ export async function validateUrlUserId(req, res, next) {
     try {
         const user = await db.query(`SELECT * FROM sessions WHERE token=$1`, [userToken])
         const url = await db.query(`SELECT * FROM urls WHERE id=$1`, [id])
+        if(user.rowCount ===0) return res.status(404).send("user nao existe")
         if (url.rowCount === 0) return res.status(404).send("url nao existe")
         if (user.rows[0].userId !== url.rows[0].userId) return res.status(401).send("acesso negado ao usuario")
         res.locals.urlId = id;
