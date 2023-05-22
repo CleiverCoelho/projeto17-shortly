@@ -8,8 +8,8 @@ import { getAllUsers } from "../controllers/users.cotrollers.js"
 
 const usersRouter = Router()
 
-usersRouter.post("/sign-up", validateSchema(signUpSchema), validateSignUpEmail, signUpUser)
-usersRouter.post("/sign-in", validateSchema(signInSchema), validateSignIn,signInUser)
+usersRouter.post("/signup", validateSchema(signUpSchema), validateSignUpEmail, signUpUser)
+usersRouter.post("/signin", validateSchema(signInSchema), validateSignIn,signInUser)
 usersRouter.get("/users", getAllUsers)
 usersRouter.get("/users/me", validateUserHeader, getUserData)
 
