@@ -30,8 +30,9 @@ export async function shortUrl(req, res) {
         
         let id = 1;
         if(lastId.rows[0] !== null){
-            id = lastId.rows[0] + 1
+            id = lastId.rows[0].id + 1
         }
+        console.log(id)
         const response = {id, shortUrl}
         // console.log(response)
 
