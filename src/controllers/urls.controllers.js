@@ -23,18 +23,17 @@ export async function shortUrl(req, res) {
     const shortUrl = nanoid(6)
     try {
         // criando tabela com o short id
-        const lastId = await db.query(`SELECT id FROM urls ORDER BY id DESC LIMIT 1`)
         await db.query(`INSERT INTO urls (name, "userId", "shortUrl", views)
             VALUES ($1, $2, $3, $4)    
         `, [url, userId, shortUrl, 0])
         
-        let id = 1;
-        if(lastId.rows[0] !== null || lastId.rows[0] !== undefined){
-            id = lastId.rows[0].id + 1
-        }
-        const response = {id, shortUrl}
+       
+        const {rows: createdId} = await db.query(`SELECT * FROM urls WHERE "userId"=$1`, [userId])
         // console.log(response)
-
+        const response = {
+            id: createdId[0].id,
+            shortUrl: createdId[0].shortUrl
+        }
         res.status(201).send(response);
     } catch (err) {
         res.status(500).send(err.message)
