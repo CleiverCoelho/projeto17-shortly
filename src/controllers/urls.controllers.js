@@ -31,7 +31,7 @@ export async function shortUrl(req, res) {
         const response = {id: lastId.rows[0] + 1, shortUrl}
         // console.log(response)
 
-        res.send(response).status(201);
+        res.status(201).send(response);
     } catch (err) {
         res.status(500).send(err.message)
     }
