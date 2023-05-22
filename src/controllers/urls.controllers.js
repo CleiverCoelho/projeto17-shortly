@@ -7,19 +7,19 @@ export async function shortUrl(req, res) {
     const {url} = req.body;
     const userId = res.locals.userId
 
-    let mainUrl = '';
-    let especifyUrl = '';
-    let barCounter = 0
-    url.split('').forEach(caractere => {
-        if(caractere === '/' && barCounter < 3) {
-            barCounter++
-        }else  if(barCounter >= 3){
-            especifyUrl += caractere;
-        }
-        else if(barCounter === 2){
-            mainUrl += caractere;
-        }
-    })
+    // let mainUrl = '';
+    // let especifyUrl = '';
+    // let barCounter = 0
+    // url.split('').forEach(caractere => {
+    //     if(caractere === '/' && barCounter < 3) {
+    //         barCounter++
+    //     }else  if(barCounter >= 3){
+    //         especifyUrl += caractere;
+    //     }
+    //     else if(barCounter === 2){
+    //         mainUrl += caractere;
+    //     }
+    // })
     const shortUrl = nanoid(6)
     try {
         // criando tabela com o short id
