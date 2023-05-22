@@ -26,7 +26,7 @@ SET default_table_access_method = heap;
 
 CREATE TABLE public.sessions (
     id integer NOT NULL,
-    "userId" integer,
+    "userId" integer NOT NULL,
     token text NOT NULL,
     "createdAt" timestamp without time zone DEFAULT now() NOT NULL
 );
@@ -94,7 +94,8 @@ CREATE TABLE public.users (
     id integer NOT NULL,
     name text NOT NULL,
     email text NOT NULL,
-    password text NOT NULL
+    password text NOT NULL,
+    "createdAt" timestamp without time zone DEFAULT now() NOT NULL
 );
 
 
@@ -143,46 +144,39 @@ ALTER TABLE ONLY public.users ALTER COLUMN id SET DEFAULT nextval('public.users_
 -- Data for Name: sessions; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-INSERT INTO public.sessions VALUES (10, 4, '8cad354f-ff04-41d9-8cb2-273fa8e61778', '2023-05-20 17:05:37.842073');
-INSERT INTO public.sessions VALUES (11, 4, '33651a06-52fb-4cc7-9167-9b57dbe1514b', '2023-05-20 17:46:30.350404');
-INSERT INTO public.sessions VALUES (12, 4, 'eab4a0ae-cf80-4751-847d-5a199f196764', '2023-05-20 19:07:48.059232');
-INSERT INTO public.sessions VALUES (13, 5, '2e840391-eb61-4952-b91e-c68791269a4b', '2023-05-20 20:37:47.628256');
 
 
 --
 -- Data for Name: urls; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-INSERT INTO public.urls VALUES (1, 'https://www.figma.com/file/DWg9233KR2GS6RLvfZRwyd/Shortly?type=design&node-id=0-1', 4, '7KBz5l', '2023-05-20 19:50:39.842826', 1);
 
 
 --
 -- Data for Name: users; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-INSERT INTO public.users VALUES (4, 'cleiver1', 'cleiver@cleiver.com', '$2b$10$chGE6NXp9EkDwmu6gapgmuOkMVPVsOPNhMO05jHzpR09cLahBohe.');
-INSERT INTO public.users VALUES (5, 'teste', 'teste@teste.com', '$2b$10$/5Z72DQrc0Uiu6RUfaLyGuBvp/Ygmeu/dol6KuNuMqtvYBjbWUKzq');
 
 
 --
 -- Name: sessions_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.sessions_id_seq', 13, true);
+SELECT pg_catalog.setval('public.sessions_id_seq', 1, false);
 
 
 --
 -- Name: urls_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.urls_id_seq', 3, true);
+SELECT pg_catalog.setval('public.urls_id_seq', 1, false);
 
 
 --
 -- Name: users_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.users_id_seq', 5, true);
+SELECT pg_catalog.setval('public.users_id_seq', 1, false);
 
 
 --
