@@ -29,13 +29,13 @@ export async function shortUrl(req, res) {
         `, [url, userId, shortUrl, 0])
         
         let id = 1;
-        if(lastId.rows[0] !== null){
+        if(lastId.rows[0] !== null || lastId.rows[0] !== undefined){
             id = lastId.rows[0].id + 1
         }
         const response = {id, shortUrl}
         // console.log(response)
 
-        res.send(response).status(201);
+        res.status(201).send(response);
     } catch (err) {
         res.status(500).send(err.message)
     }
