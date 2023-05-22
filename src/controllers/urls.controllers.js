@@ -28,7 +28,11 @@ export async function shortUrl(req, res) {
             VALUES ($1, $2, $3, $4)    
         `, [url, userId, shortUrl, 0])
         
-        const response = {id: lastId.rows[0] + 1, shortUrl}
+        let id = 1;
+        if(lastId.rows[0] !== null){
+            id = lastId.rows[0] + 1
+        }
+        const response = {id, shortUrl}
         // console.log(response)
 
         res.status(201).send(response);
