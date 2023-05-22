@@ -27,7 +27,7 @@ export async function shortUrl(req, res) {
         `, [url, userId, shortUrl, 0])
         
        
-        const {rows: createdId} = await db.query(`SELECT * FROM urls WHERE "userId"=$1`, [userId])
+        const {rows: createdId} = await db.query(`SELECT * FROM urls WHERE "shortUrl"=$1`, [shortUrl])
         // console.log(response)
         const response = {
             id: createdId[0].id,

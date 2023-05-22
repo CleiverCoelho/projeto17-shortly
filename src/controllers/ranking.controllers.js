@@ -14,7 +14,7 @@ export async function getRanking(req, res) {
         // const response = ranking.map((res, index) => {
         //     return {...res, ...linksCount[index]}
         // })
-        res.status(201).send(ranking);
+        res.status(200).send(ranking);
     } catch (err) {
         res.status(500).send(err.message)
     }
