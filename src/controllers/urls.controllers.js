@@ -1,5 +1,4 @@
 import { db } from "../database/database.connection.js"
-import bcrypt from 'bcrypt';
 import { nanoid } from 'nanoid'
 
 
