@@ -62,7 +62,7 @@ export async function openShortUrl(req, res) {
         [views + 1, shortUrl])
         const {rows: urlInfo} = await db.query(`SELECT name AS url FROM urls WHERE "shortUrl"=$1`, [shortUrl])
         const path = urlInfo[0].url;
-        res.redirect(200, path);
+        res.redirect(302, path);
     } catch (err) {
         res.status(500).send(err.message)
     }
