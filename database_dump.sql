@@ -166,9 +166,11 @@ INSERT INTO public.sessions VALUES (2, 2, '8f81ca03-50e3-4d41-b0f1-764648674c88'
 -- Data for Name: urls; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-INSERT INTO public.urls VALUES (1, 'https://access.redhat.com/documentation/pt-br/red_hat_enterprise_linux/8/html/deploying_different_types_of_servers/backing-up-postgresql-data_using-postgresql', 1, '8PCDYU', '2023-05-21 11:22:17.578531', 0);
-INSERT INTO public.urls VALUES (2, 'https://dashboard.render.com/d/dpg-chkvkjm7avj2178982b0-a/info', 1, '0eaaoy', '2023-05-21 11:22:30.474075', 0);
-INSERT INTO public.urls VALUES (4, 'https://www.notion.so/bootcampra/Tutorial-Deploy-de-aplica-es-back-end-no-Render-PostgreSQL-524e395a023a4da096c032c9b12dac67', 2, 'kDOP9C', '2023-05-21 11:26:02.952739', 0);
+INSERT INTO public.urls VALUES (2, 'https://dashboard.render.com/d/dpg-chkvkjm7avj2178982b0-a/info', 1, '0eaaoy', '2023-05-21 11:22:30.474075', 4);
+INSERT INTO public.urls VALUES (4, 'https://www.notion.so/bootcampra/Tutorial-Deploy-de-aplica-es-back-end-no-Render-PostgreSQL-524e395a023a4da096c032c9b12dac67', 2, 'kDOP9C', '2023-05-21 11:26:02.952739', 12);
+INSERT INTO public.urls VALUES (1, 'https://access.redhat.com/documentation/pt-br/red_hat_enterprise_linux/8/html/deploying_different_types_of_servers/backing-up-postgresql-data_using-postgresql', 1, '8PCDYU', '2023-05-21 11:22:17.578531', 2);
+INSERT INTO public.urls VALUES (5, 'https://www.amazon.com.br/?tag=admarketbr-20&ref=pd_sl_587192828264c05fdc17879ec7488cfa49dadd80fff91ef795f66c0f&mfadid=adm', 2, 'ejf185', '2023-05-21 12:56:08.764804', 0);
+INSERT INTO public.urls VALUES (6, 'https://www.google.com/search?channel=fs&client=ubuntu&q=google+tradutor', 2, 'NDEcQT', '2023-05-21 12:56:27.888931', 4);
 
 
 --
@@ -190,7 +192,7 @@ SELECT pg_catalog.setval('public.sessions_id_seq', 2, true);
 -- Name: urls_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.urls_id_seq', 4, true);
+SELECT pg_catalog.setval('public.urls_id_seq', 6, true);
 
 
 --
